@@ -2,8 +2,8 @@
 layout: post
 comments: true
 usemathjax: true
-title: "Writing math on post"
-excerpt: "Learn math"
+title: "aother post"
+excerpt: "Learn math again"
 date: 2022-04-6
 mathjax: true
 ---
