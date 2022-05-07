@@ -23,10 +23,9 @@ These two are of the very few usages I know of for group theory which is
 one of the reasons for writing this blog
 
 
-Group theory basics
-===================
+## 1. Group theory basics
 
-### Group definition 
+### 1.1 Group definition 
 
 A group is a mathematical object similar to a field. It is basically a
 set, $$G$$, equipped with a single operator (unlike a filed that has two
@@ -44,14 +43,18 @@ $$\forall g\in G\ g*e=g$$
 
 3. **Inverse element:** $$\forall g\in G\ \exists h\in G\ g*h=e$$
 
-### Subgroups
+
+
+### 1.2 Subgroups
 
 We say that $$H$$ sub group of $$G$$ if 
 
 $$H\subseteq G$$ and $$(H,*)$$ is a group
 in itself
 
-### The $$\mathbb{Z}_{n}^{*}$$ group
+
+
+### 1.3 The $$\mathbb{Z}_{n}^{*}$$ group
 
 A very well studied family of groups we'll be using is the Z-star group.
 For any natural number $$n$$ we can define the group
@@ -76,16 +79,16 @@ $$\mathbb{Z}_{p}^{*}=\{1,2,3....p-1\}$$
 
 namely $${\vert}\mathbb{Z}_{n}^{*}{\vert}=p-1$$
 
-### **lemma 1:** 
+### 1.3 lemma 1: 
 If $$H\subseteq G$$ is a subgroup then $${\vert}H{\vert}$$ divides $${\vert}G{\vert}$$
 
-### **lemma 2:**
+### 1.4 lemma 2:
  $$\forall g\in G\ g^{|G|}=e$$  
 
-### **lemma 3:**
+### 1.5 lemma 3:
  $$[ab]_{c}=[[a]_{c}[b]_{c}]_{c}$$
 
-### **Fermma's little theorem:**
+### 1.6 Fermma's little theorem:
 
 For any prime $$p$$ and a natural number $$a$$:
 
@@ -94,8 +97,8 @@ $$GCD(p,a)=1\Longrightarrow[a^{p-1}]_{p}=1$$
 This is a direct derivation from lemma-1, the fact that
 $${\vert}\mathbb{Z}_{n}^{*}{\vert}=p-1$$ and lemma-3
 
-Miller Rabin polynomial time prime validation
-=============================================
+
+## 2. Miller Rabin polynomial time prime validation
 
 The most straight-forward algorithm for verifying if an integer $$n$$ is
 prime will be to go over all the number between $$2$$ and $$\sqrt{n}$$ and
@@ -105,7 +108,7 @@ This takes $$O(\sqrt{n})$$ operations and as we receive the input $$(n)$$ in dig
 
 M&R suggested a probabilistic algorithm that given an integer $$n$$ and a precision value $$\epsilon$$ returns the correct answer for $$n's$$ primness with probability bigger then $$1-\epsilon$$.
 
-### M&R Algorithm
+### 2.1 M&R Algorithm
 0. >Inputs: $$n,\epsilon$$
 
 1. >  Find an integer $$r$$ such that $$\frac{1}{2^{r}}<\epsilon$$
@@ -118,9 +121,9 @@ M&R suggested a probabilistic algorithm that given an integer $$n$$ and a precis
 
 5. > return "Prime"
 
-###  Proof of correctness:
+### 2.2  Proof of correctness:
 
-#### $$n$$ is a prime 
+##### $$n$$ is a prime 
 $$\forall_{1\leq k\leq n-1}$$ $$GCD(p,k)=1$$ 
 
 (no smaller number divides it) and from little ferma's theorem we have
@@ -129,7 +132,7 @@ $$[k^{n-1}]_{n}=1$$
 
 so the condition (step 4.) in each iteration will be false and the algorithm will finally return "Prime" w.p 1.
 
-#### $$n$$ is not a prime
+##### $$n$$ is not a prime
 In this case we'll show that (for most numbers) the probability of choosing 
 
 $$2\leq k\leq n-1$$ 
@@ -169,10 +172,10 @@ $${\vert}A_{n}{\vert}={\vert}\mathbb{Z}_{n}^{*}{\vert}$$.
 So what we'll do is be sloppy and just not deal with them.
 Apparently these numbers are very rare and have their own name, [Carmichael numbers] (https://en.wikipedia.org/wiki/Carmichael_number). Although there are infinitely many of them there are only 2,163 are less than 25,000,000,000. For these numbers the algorithm wont work.
 
-RSA
-===
 
-### Public-ky cryptosystems 
+## 3. RSA
+
+### 3.1 Public-ky cryptosystems 
 
 RSA is an implementation of a public-key cryptosystem. Basically it means that every member of a communication channel have a public
 **encryption** key and a private **decryption** key. Every member of the channel can encrypt a message with some public key so that it could be decrypted only using the matching private key which is supposed to kept in secret.
@@ -187,7 +190,7 @@ where $k$ is a key, $M$ is the messages space and
 
 $$D_{k_d}(E_{k_e}(m))=m$$.
 
-### RSA Scheme
+### 3.2 RSA Scheme
 
 In RSA both keys are pairs of numbers
 
@@ -212,7 +215,7 @@ The way to generate such numbers for communicating messages of $$b$$ bits is the
 3. Set $$d$$ to be the inverse of $$e$$ in $$\mathbb{Z^{*}}_{(p-1)(q-1)}$$. 
     i.e $$[e*d]_{(p-1)(q-1)}=1$$
 
-### Scheme corrrectness
+### 3.3 Scheme corrrectness
 
 Lets show that keys generated this way really form a public key cryptosystem. First, from
 lemma-3 
@@ -239,7 +242,7 @@ We split into cases: Since $$p$$ is prime either $$GCD(p,m)=p$$ or $$GCD(p,m)=1$
 
 > and $$m^{de}=m^{k(p-1)(q-1)+1}=m(m^{(p-1)})^{k(q-1)}=m1^{k(q-1)}=m$$
 
-### Scheme secrecy
+### 3.4 Scheme secrecy
 
 How is the secret key protected? Given that we know the public key $$e$$
 requires knowing p,q in order to find its inverse, $$d$$, in
