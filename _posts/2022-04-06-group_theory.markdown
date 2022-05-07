@@ -56,7 +56,7 @@ in itself
 A very well studied family of groups we'll be using is the Z-star group.
 For any natural number $$n$$ we can define the group
 
-$$\mathbb{Z}_{n}^{*}=\left\{ k|1\leq k\leq n-1,GCD(k,n)=1\right\}$$.
+$$\mathbb{Z}_{n}^{*}=\left\{ k\ensuremath\vert1\leq k\leq n-1,GCD(k,n)=1\right\}$$.
 
 i.e all the numbers from 1 to n-1 that are mutually prime with n (have no
 common divisor but 1).
@@ -74,13 +74,13 @@ Note that for any prime $$p$$ we have
 
 $$\mathbb{Z}_{p}^{*}=\{1,2,3....p-1\}$$
 
-namely $$|\mathbb{Z}_{n}^{*}|=p-1$$
+namely $$\vert\mathbb{Z}_{n}^{*}\vert=p-1$$
 
 ### <u>lemma 1:</u> 
-If $$H\subseteq G$$ is a subgroup then $$|H|$$ divides $$|G|$$
+If $$H\subseteq G$$ is a subgroup then $$\vertH\vert$$ divides $$\vertG\vert$$
 
 ### <u>lemma 2:</u>
- $$\forall g\in G\ g^{|G|}=e$$  
+ $$\forall g\in G\ g^{\vertG\vert}=e$$  
 
 ### <u>lemma 3:</u>
  $$[ab]_{c}=[[a]_{c}[b]_{c}]_{c}$$
@@ -92,7 +92,7 @@ For any prime $$p$$ and a natural number $$a$$:
 $$GCD(p,a)=1\Longrightarrow[a^{p-1}]_{p}=1$$
 
 This is a direct derivation from lemma-1, the fact that
-$$|\mathbb{Z}_{n}^{*}|=p-1$$ and lemma-3
+$$\vert\mathbb{Z}_{n}^{*}\vert=p-1$$ and lemma-3
 
 Miller Rabin polynomial time prime validation
 =============================================
@@ -142,29 +142,29 @@ is smaller then  $$\frac{1}{2}$$  and the probability of choosing such a number 
 
 Lets look at the set
 
-$$A_{n}=\{k|1\leq k\leq n-1,[k^{n-1}]_{n}=1\}$$. 
+$$A_{n}=\{k\vert1\leq k\leq n-1,[k^{n-1}]_{n}=1\}$$. 
 
 Appendix-1 shows that when equipped with the (mod n) multiplication operator this is a subgroup of $$\mathbb{Z}_{n}^{*}$$.
 
 If so we can use Lemma-1 to say that 
 
-$$|A_{n}|$$ divides $$|\mathbb{Z}_{n}^{*}|$$ 
+$$\vertA_{n}\vert$$ divides $$\vert\mathbb{Z}_{n}^{*}\vert$$ 
 
-i.e that  $$|\mathbb{Z}_{n}^{*}|=k_{n}|A_{n}|$$  for $$k\in\mathbb{N}$$. 
+i.e that  $$\vert\mathbb{Z}_{n}^{*}\vert=k_{n}\vertA_{n}\vert$$  for $$k\in\mathbb{N}$$. 
 
 If we ignore for a moment numbers $$n$$ for which $$k_{n}=1$$ we can say that
 
-$$|A_{n}|\leq\frac{|\mathbb{Z}_{n}^{*}|}{2}$$ 
+$$\vertA_{n}\vert\leq\frac{\vert\mathbb{Z}_{n}^{*}\vert}{2}$$ 
 
-and since $$|\mathbb{Z}_{n}^{*}|\leq n-1$$ we have 
+and since $$\vert\mathbb{Z}_{n}^{*}\vert\leq n-1$$ we have 
 
-$$|A_{n}|\leq\frac{n-1}{2}$$ 
+$$\vertA_{n}\vert\leq\frac{n-1}{2}$$ 
 
 so when sampling from $$U(2,n-1)$$ the probability of chosing a member of
-$$|A_{n}|$$ is smaller then $$\frac{1}{2}$$ as desired.
+$$\vertA_{n}\vert$$ is smaller then $$\frac{1}{2}$$ as desired.
 
 We are left with dealing with those numbers $$n$$ for which $$k_n=1$$  i.e
-$$|A_{n}|=|\mathbb{Z}_{n}^{*}|$$.
+$$\vertA_{n}\vert=\vert\mathbb{Z}_{n}^{*}\vert$$.
 
 So what we'll do is be sloppy and just not deal with them.
 Apparently these numbers are very rare and have their own name, [Carmichael numbers] (https://en.wikipedia.org/wiki/Carmichael_number). Although there are infinitely many of them there are only 2,163 are less than 25,000,000,000. For these numbers the algorithm wont work.
